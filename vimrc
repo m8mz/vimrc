@@ -6,9 +6,6 @@ filetype off
 syntax on
 filetype plugin indent on
 set wrap
-nnoremap <F2> :set invpaste paste?<CR>
-imap <F2> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F2>
 set backspace=indent,eol,start
 set matchpairs+=<:>
 set number
@@ -23,11 +20,22 @@ set copyindent
 set expandtab
 set ttyfast
 set background=dark
+"colo industry
 
 " pastetoggle
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
+
+" build c script
+map <F8> :!gcc % && ./a.out<CR>
+
+" remove numbers
+nnoremap <F3> :set nonu! nornu!<CR>
+
+" split screen
+nnoremap <F4> :split<CR>
+nnoremap <F5> :vsplit<CR>
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -46,12 +54,6 @@ autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab indentkeys-=<:>
 au! BufNewFile,BufReadPost *.{py} set filetype=python
 autocmd Filetype python setlocal ts=2 sw=2 sts=2 expandtab indentkeys-=<:>
 
-set background=dark
-
-if executable('rg')
-        let g:rg_derive_root='true'
-endif
-
 let mapleader = " "
 let g:netrw_browse_split = 0
 let g:netrw_banner = 0
@@ -65,3 +67,8 @@ nnoremap <leader>q :wincmd q<CR>
 nnoremap <leader>pv :Lex <bar> :vertical resize 30<CR>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
+
+" buffer commands
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>p :bp<CR>
+nnoremap <leader>d :bd<CR>
